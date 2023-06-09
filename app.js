@@ -6,10 +6,37 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('public'));
 
+
+
 app.get('/', (req, res) => {
-    res.render("index");
+
+  const gamesData = require('./games.json')
+    res.render("index", {gamesData: gamesData});
   })
 
+
+  
+app.get('/game/:name', (req, res) => {
+  const gamesData = require('./games.json');
+  const gameName = req.params.name;
+
+  const foundedGame = gamesData.find((game)=>game.name.toLowerCase()===gameName.toLowerCase())
+
+  res.render(`${gameName}`, {gamesData: gamesData});
+
+})
+
+
+
+  
+// app.get('/game/diceRoller', (req, res) => {
+//   res.render('css/diceRoller');
+//   res.render('diceRoller');
+// })
+
+// app.get('/game/fourchette', (req, res) => {
+//     res.render('fourchette');
+// })
 
 app.listen(port, () => {
     console.log(`Listen on http://localhost${port}`);

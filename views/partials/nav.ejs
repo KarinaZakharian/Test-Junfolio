@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+      <li><a href="/">Accueil</a></li>
+      <% gamesData.forEach((game) => { %>
+        <li>
+            <a href="/game/<%=game.name%>"><%=game.title%></a>
+        </li>
+
+      <%})%>
+    </ul>
+  </nav>
