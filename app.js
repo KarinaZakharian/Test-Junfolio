@@ -11,6 +11,7 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
 
   const gamesData = require('./games.json')
+  
     res.render("index", {gamesData: gamesData});
   })
 
@@ -20,9 +21,9 @@ app.get('/game/:name', (req, res) => {
   const gamesData = require('./games.json');
   const gameName = req.params.name;
 
-  const foundedGame = gamesData.find((game)=>game.name.toLowerCase()===gameName.toLowerCase())
+  const foundedGame = gamesData.find((game)=>game.name===gameName)
 
-  res.render(`${gameName}`, {gamesData: gamesData});
+  res.render(`${gameName}`, {gamesData: gamesData, game:foundedGame},);
 
 })
 
