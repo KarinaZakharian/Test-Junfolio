@@ -2,9 +2,6 @@ const Book = require("../services/models");
 const sequelize = require('../services/db');
 
 
-
-
-
 const controller = {
 
     createBook: async (req, res) => {
